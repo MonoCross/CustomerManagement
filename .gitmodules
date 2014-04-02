@@ -1,0 +1,9 @@
+[submodule "MonoCross"]
+	path = MonoCross
+	url = https://github.com/MonoCross/MonoCross.git
+[submodule "MonoTouch.Dialog"]
+	path = MonoTouch.Dialog
+	url = https://github.com/migueldeicaza/MonoTouch.Dialog.git
+[submodule "CustomerManagement/CustomerManagement.Touch/MonoTouch.Dialog"]
+	path = CustomerManagement/CustomerManagement.Touch/MonoTouch.Dialog
+	url = https://github.com/migueldeicaza/MonoTouch.Dialog.git

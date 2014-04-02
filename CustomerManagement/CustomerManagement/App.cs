@@ -11,6 +11,11 @@ namespace CustomerManagement
 {
     public class App : MXApplication
     {
+#if LOCAL_SERVICE
+        public static readonly string ServiceUri = "http://localhost/MXDemo/";
+#else
+        public static readonly string ServiceUri = "http://ifactrcustomers.azurewebsites.net/";
+#endif
         public override void OnAppLoad()
         {
 			// Set the application title

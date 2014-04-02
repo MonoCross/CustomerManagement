@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using MonoCross.Navigation;
 using CustomerManagement.Shared.Model;
+using System.Xml.Serialization;
+using System.Net;
+using System.IO;
 
 namespace CustomerManagement.Controllers
 {
@@ -17,21 +20,18 @@ namespace CustomerManagement.Controllers
         public static List<Customer> GetCustomerList()
         {
             List<Customer> customerList = new List<Customer>();
-#if LOCAL_DATA
-            customerList = CustomerManagement.Data.XmlDataStore.GetCustomers();
-#else
+
             // XML Serializer
-            System.Xml.Serialization.XmlSerializer serializer = new XmlSerializer(typeof(List<Customer>));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Customer>));
 
             // web request
-            string urlCustomers = "http://localhost/MXDemo/customers.xml";
+            string urlCustomers = string.Format("{0}customers.xml", App.ServiceUri);
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(urlCustomers);
             using (StreamReader reader = new StreamReader(request.GetResponse().GetResponseStream(), true))
             {
                 // XML serializer
                 customerList = (List<Customer>)serializer.Deserialize(reader);
             }
-#endif
             return customerList;
         }
     }

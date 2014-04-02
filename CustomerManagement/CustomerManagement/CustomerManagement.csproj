@@ -33,15 +33,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Controllers\CustomerListController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebExtensions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MonoCross\MonoCross.Navigation\MonoCross.Navigation.csproj">
+      <Project>{4618ccfc-5895-4c44-ad25-8bf312a96b86}</Project>
+      <Name>MonoCross.Navigation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CustomerManagement.Shared\CustomerManagement.Shared.csproj">
+      <Project>{5a2d2a33-fd09-4806-bc8c-c486cbcc7ae5}</Project>
+      <Name>CustomerManagement.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

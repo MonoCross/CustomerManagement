@@ -56,6 +56,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MonoTouch.Dialog-1" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -64,6 +65,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\MonoCross\MonoCross.Navigation\MonoCross.Navigation.csproj">
+      <Project>{4618ccfc-5895-4c44-ad25-8bf312a96b86}</Project>
+      <Name>MonoCross.Navigation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoCross\MonoCross.Touch\MonoCross.Touch.csproj">
+      <Project>{4f743690-64bd-4b1f-bd75-872c910a94e2}</Project>
+      <Name>MonoCross.Touch</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomerManagement\CustomerManagement.MT.csproj">
       <Project>{77C8BF6C-FD60-4323-A133-DF2E6CD4A5B3}</Project>
       <Name>CustomerManagement.MT</Name>
@@ -71,18 +80,6 @@
     <ProjectReference Include="..\..\CustomerManagement.Shared\CustomerManagement.Shared.MT.csproj">
       <Project>{9B58BC90-0C84-498D-A854-ABC634FD8351}</Project>
       <Name>CustomerManagement.Shared.MT</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MonoCross.Navigation\MonoCross.Navigation.MT.csproj">
-      <Project>{0C3337B2-0B8A-4C0B-8330-3B81F5B96B9B}</Project>
-      <Name>MonoCross.Navigation.MT</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MonoCross.Touch\MonoCross.Touch.csproj">
-      <Project>{4F743690-64BD-4B1F-BD75-872C910A94E2}</Project>
-      <Name>MonoCross.Touch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MonoTouch.Dialog\MonoTouch.Dialog.csproj">
-      <Project>{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}</Project>
-      <Name>MonoTouch.Dialog</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

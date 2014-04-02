@@ -11,7 +11,8 @@
     <RootNamespace>CustomerManagement.Console</RootNamespace>
     <AssemblyName>CustomerManagement.Console</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -23,6 +24,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -32,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,34 +53,25 @@
     <Compile Include="Views\CustomerView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CustomerManagement.Shared\CustomerManagement.Shared.csproj">
-      <Project>{77EFE548-9D3B-4635-925C-4A9D7281BFE3}</Project>
-      <Name>CustomerManagement.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MonoCross.Console\MonoCross.Console.csproj">
-      <Project>{A658FEA2-1B62-4A50-A1C5-0A6ADE4655D3}</Project>
-      <Name>MonoCross.Console</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MonoCross.Navigation\MonoCross.Navigation.csproj">
-      <Project>{4618CCFC-5895-4C44-AD25-8BF312A96B86}</Project>
-      <Name>MonoCross.Navigation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CustomerManagement\CustomerManagement.csproj">
-      <Project>{183C1DE6-903B-419C-B19A-26145CA4A93A}</Project>
-      <Name>CustomerManagement</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Xml\Customers.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Xml\Orders.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Xml\Products.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <ProjectReference Include="..\..\..\MonoCross\MonoCross.Console\MonoCross.Console.csproj">
+      <Project>{a658fea2-1b62-4a50-a1c5-0a6ade4655d3}</Project>
+      <Name>MonoCross.Console</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MonoCross\MonoCross.Navigation\MonoCross.Navigation.csproj">
+      <Project>{4618ccfc-5895-4c44-ad25-8bf312a96b86}</Project>
+      <Name>MonoCross.Navigation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CustomerManagement.Shared\CustomerManagement.Shared.csproj">
+      <Project>{5a2d2a33-fd09-4806-bc8c-c486cbcc7ae5}</Project>
+      <Name>CustomerManagement.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomerManagement\CustomerManagement.csproj">
+      <Project>{6e9f2a00-e9b2-4abd-9c9d-8e710bf2d86a}</Project>
+      <Name>CustomerManagement</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

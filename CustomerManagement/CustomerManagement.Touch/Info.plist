@@ -10,8 +10,8 @@
 	<string>4.3</string>
 	<key>UIDeviceFamily</key>
 	<array>
-		<string>1</string>
-		<string>2</string>
+		<integer>1</integer>
+		<integer>2</integer>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
@@ -21,11 +21,12 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
+	<array/>
+	<key>CFBundleIdentifier</key>
+	<string>net.monocross.customermanagement</string>
+	<key>NSMainNibFile</key>
+	<string></string>
+	<key>NSMainNibFile~ipad</key>
+	<string></string>
 </dict>
 </plist>

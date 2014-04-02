@@ -4,13 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
-using System.Xml.Linq;
+//using System.Xml.Linq;
 
 #if WINDOWS_PHONE
 using System.IO.IsolatedStorage;
 #endif
 
 using CustomerManagement.Shared.Model;
+using System.Xml.Linq;
 
 
 namespace CustomerManagement.Data
@@ -287,7 +288,7 @@ namespace CustomerManagement.Data
 		//
         static List<Customer> GetCustomerList()
         {
-			string dataFilePath = Path.Combine(AppPath, Path.Combine("Xml", "Customers.xml"));
+            string dataFilePath = Path.Combine(AppPath, Path.Combine("Xml", "Customers.xml"));
 
 			var loadedData = XDocument.Load(dataFilePath);
 	        using (var reader = loadedData.Root.CreateReader())
@@ -346,6 +347,23 @@ namespace CustomerManagement.Data
                 var serializer = new XmlSerializer(typeof(List<Order>));
                 serializer.Serialize(writer, orders);
             }
+        }
+    }
+
+    public static class Extensions
+    {
+        public static string AppendPath(this string basePath, string relativePath)
+        {
+            if (string.IsNullOrEmpty(relativePath))
+                return basePath;
+
+            char[] chars = new char[2];
+            chars[0] = '/';
+            chars[1] = '\\';
+
+            //Match relative path to base
+            int index = basePath.Contains("/") ? 0 : 1;
+            return (basePath.TrimEnd(chars) + chars[index] + relativePath.TrimStart(chars)).Replace(chars[1 - index], chars[index]);
         }
     }
 }

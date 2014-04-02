@@ -10,6 +10,8 @@ using MonoCross.Navigation;
 
 using CustomerManagement.Shared;
 using CustomerManagement.Shared.Model;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace CustomerManagement.Controllers
 {
@@ -76,10 +78,7 @@ namespace CustomerManagement.Controllers
 
         public static Customer GetCustomer(string customerId)
         {
-#if LOCAL_DATA
-            return CustomerManagement.Data.XmlDataStore.GetCustomer(customerId);
-#else
-            string urlCustomers = string.Format("http://localhost/MXDemo/customers/{0}.xml", customerId);
+            string urlCustomers = string.Format("{0}customers/{1}.xml", App.ServiceUri, customerId);
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(urlCustomers);
             XmlSerializer serializer = new XmlSerializer(typeof(Customer));
@@ -87,15 +86,11 @@ namespace CustomerManagement.Controllers
             {
                 return (Customer)serializer.Deserialize(reader);
             }
-#endif
         }
 		
-		public static bool UpdateCustomer(Customer customer)
+        public static bool UpdateCustomer(Customer customer)
         {
-#if LOCAL_DATA
-            CustomerManagement.Data.XmlDataStore.UpdateCustomer(customer);
-#else
-            string urlCustomers = "http://localhost/MXDemo/customers/customer.xml";
+            string urlCustomers = string.Format("{0}customers.xml", App.ServiceUri);
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(urlCustomers);
             request.Method = "PUT";
@@ -108,16 +103,12 @@ namespace CustomerManagement.Controllers
             }
 
             request.GetResponse();
-#endif
             return true;
 		}
 		
 		public static bool AddNewCustomer(Customer customer)
         {
-#if LOCAL_DATA
-            CustomerManagement.Data.XmlDataStore.CreateCustomer(customer);
-#else
-            string urlCustomers = "http://localhost/MXDemo/customers/customer.xml";
+            string urlCustomers = string.Format("{0}customers.xml", App.ServiceUri);
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(urlCustomers);
             request.Method = "POST";
@@ -130,21 +121,16 @@ namespace CustomerManagement.Controllers
             }
 
             request.GetResponse();
-#endif
             return true;
         }
 		
         public static bool DeleteCustomer(string customerId)
         {
-#if LOCAL_DATA
-        CustomerManagement.Data.XmlDataStore.DeleteCustomer(customerId);
-#else
-        string urlCustomers = "http://localhost/MXDemo/customers/" + customerId;
+            string urlCustomers = string.Format("{0}customers/{1}", App.ServiceUri, customerId);
 
-        HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(urlCustomers);
-        request.Method = "DELETE";
-        request.GetResponse();
-#endif
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(urlCustomers);
+            request.Method = "DELETE";
+            request.GetResponse();
             return true;
         }
     }
